@@ -163,7 +163,7 @@ export default {
 </script>
 ```
 
-## Confirm modal
+### Confirm modal
 
 ```html
 <template>
@@ -196,7 +196,7 @@ export default {
 </script>
 ```
 
-## Confirm modal - Try/catch alternative
+### Confirm modal - Try/catch alternative
 
 ```html
 <template>
