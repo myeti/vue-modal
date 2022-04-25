@@ -210,14 +210,14 @@ export default {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 100vw;
-    padding-top: var(--modal-spacearound, 100px);
-    padding-bottom: var(--modal-spacearound, 100px);
+    right: 0;
+    padding: var(--modal-margin, 100px 20px); 
     background: var(--modal-backdrop, rgba(0, 0, 0, .7));
     overflow: auto;
 
     &_body {
         position: relative;
+        box-sizing: border-box;
         width: 100%;
         max-width: var(--modal-width, 650px);
         padding: var(--modal-padding, 60px);

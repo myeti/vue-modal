@@ -33,7 +33,7 @@ export default {
 </script>
 ```
 
-### Modal props
+## Attributes
 
 | prop | type | default | desc |
 | ---- | ---- | ---- | ---- |
@@ -42,7 +42,7 @@ export default {
 
 *Note: `.modal_transition` basic animation is included*
 
-### Slot props
+## Slot props
 
 | prop | type | desc |
 | ---- | ---- | ---- |
@@ -51,22 +51,43 @@ export default {
 | `accept` | `Function` | see `accept` method |
 | `reject` | `Function` | see `reject` method |
 
-### Methods
-
-| method | return | desc |
-| ------ | ------ | ---- |
-| `open(payload)` | `Promise` | open modal with a given `payload` to pass to the slot |
-| `close()` | - | resolve `Promise` and close modal, basic usage |
-| `accept(result)` | - | resolve `Promise` and close modal, usefull for confirm modal |
-| `reject(result)` | - | reject `Promise` and close modal, usefull for confirm modal |
-
-###  Events
+##  Events
 
 | event | param | desc |
 | ----- | ----- | ---- |
 | `open` | - | triggered when modal is activated |
 | `close` | - | triggered when modal is deactivated |
 | `toggle` | `Boolean` | triggered on both `open` and `close` with the active value |
+
+## Methods
+
+### `Modal.open(payload, alert)`
+
+Open modal and pass `payload` to the slot.
+
+| param | type | desc |
+| ------ | ------ | ---- |
+| `payload` | `*` | custom data passed down to the `<slot />` |
+| `alert` | `Boolean` | if `true` turn the modal into `alert` role, disable closing till `accept` or `reject`. Has an `Object` variant, see next |
+| `alert` | `Object { label: String, desc: String}` | same as previous and set `aria-labelledby` and `aria-describedby` for better a11y |
+
+Returns a `Promise` waiting for `accept()` or `reject()`.
+
+### `Modal.expect(payload, alert)`
+
+Same as `Modal.open()` but defaultly set `alert` to `true` and returns a `Boolean` based on the `Promise` result.
+
+### `Modal.close()`
+
+Close the modal and reset its data. **Note: It does not resolve nor reject the `Promise` !**
+
+### `Modal.accept(result)`
+
+Resolve the `Promise` with `result` and close.
+
+### `Modal.accept(result)`
+
+Reject the `Promise` with `result` and close.
 
 
 ## Customization
@@ -78,6 +99,7 @@ Set these CSS variables:
 --modal-zindex
 --modal-backdrop
 --modal-width
+--modal-margin
 --modal-padding
 --modal-background
 --modal-radius
@@ -218,14 +240,18 @@ export default {
     methods: {
         async confirm(message) {
             try {
-                const resolved = await this.$refs.modal.open({ message })
-                // resolved = "oh yes" or "not sure"
+                const result = await this.$refs.modal.open({ message })
+                // result = "oh yes" or "not sure"
             }
-            catch(rejected) {
-                // rejected = "oh no"
+            catch(result) {
+                // result = "oh no"
             }
         }
     }
 }
 </script>
 ```
+
+### More
+
+See `test/components` for more exemples.

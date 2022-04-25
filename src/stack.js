@@ -13,6 +13,7 @@ let listening = false
 export function pushModal(modal) {
     listenEvents()
     stack.push(modal)
+    lockBody()
 }
 
 /**
@@ -23,6 +24,9 @@ export function dropModal(modal) {
     const i = stack.findIndex(m => m.uid === modal.uid)
     stack.splice(i, 1)
     releaseFocus(modal)
+    if(!stack.length) {
+        unlockBody()
+    }
 }
 
 /**
@@ -31,6 +35,20 @@ export function dropModal(modal) {
  */
 export function getActiveModal() {
     return stack[stack.length - 1]
+}
+
+/**
+ * On open, disable body scroll
+ */
+function lockBody() {
+    document.body.style.overflowY = 'hidden'
+}
+
+/**
+ * On all closed, restore body scroll
+ */
+function unlockBody() {
+    document.body.style.overflowY = 'auto'
 }
 
 /**
