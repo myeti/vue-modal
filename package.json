@@ -1,0 +1,22 @@
+{
+    "name": "vue-modal",
+    "version": "1.0.0",
+    "main": "dist/vue-modal.common.js",
+    "unpkg": "dist/vue-modal.umd.min.js",
+    "files": [
+        "dist/*.js"
+    ],
+    "scripts": {
+        "start": "vue-cli-service serve ./test/main.js",
+        "build": "vue-cli-service build --name vue-modal --entry ./src/Modal.vue --target lib",
+        "postinstall": "npm run build"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.5.15",
+        "@vue/cli-service": "^4.5.15",
+        "@vue/compiler-sfc": "^3.2.23",
+        "sass": "^1.43.5",
+        "sass-loader": "^10.2.0",
+        "vue": "^3.2.23"
+    }
+}
