@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Modal from 'somewhere/vue-modal'
+import Modal from '@todo/vue-modal'
 
 export default {
     components: {
@@ -36,9 +36,10 @@ export default {
 ### Modal props
 
 | prop | type | default | desc |
-| ---- | ---- | ---- |
-| `teleport` | `String` | `body` | name of the DOM element to teleport the modal in. See `Teleport.to` |
-| `transition` | `String` | `modal_transition` | name of the CSS transition to play. See `Transition.name` |
+| ---- | ---- | ---- | ---- |
+| `teleport` | `String` | `body` | name of the DOM element to teleport the modal in, see `Teleport.to` |
+| `transition` | `String` | `modal_transition` | name of the CSS transition to play, see `Transition.name` |
+
 *Note: `.modal_transition` basic animation is included*
 
 ### Slot props
@@ -140,7 +141,7 @@ To change it, use the `#close` slot:
 </template>
 
 <script>
-import Modal from 'somewhere/vue-modal'
+import Modal from '@todo/vue-modal'
 import MyForm from '@/components/MyForm'
 
 export default {
@@ -174,7 +175,7 @@ export default {
 </template>
 
 <script>
-import Modal from 'somewhere/vue-modal'
+import Modal from '@todo/vue-modal'
 
 export default {
     components: {
@@ -208,7 +209,7 @@ export default {
 </template>
 
 <script>
-import Modal from 'somewhere/vue-modal'
+import Modal from '@todo/vue-modal'
 
 export default {
     components: {
